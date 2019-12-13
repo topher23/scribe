@@ -1,3 +1,7 @@
+from Models.Aggregables.Regions import Regions
+from Models.Aggregables.Risks import Risks
+from Models.Aggregables.Sector import Sector
+from Models.Aggregables.Strategy import Strategy
 from Models.LimitedPartner import *
 from machine_learning.ml import *
 import pandas as pd
@@ -57,8 +61,8 @@ def main(arg):
         # print ML model result
         ml.predict_ml([
             LimitedPartner.fundsize,
-            LimitedPartner.region,
-            LimitedPartner.risk,
-            LimitedPartner.sector,
-            LimitedPartner.strategy])
+            Regions.LimitedPartner.region,
+            Risks.LimitedPartner.risk,
+            Sector.LimitedPartner.sector,
+            Strategy.LimitedPartner.strategy])
 
