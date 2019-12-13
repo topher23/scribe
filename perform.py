@@ -1,13 +1,16 @@
 from Models.LimitedPartner import *
-from machine_learning.ml import ml
+from machine_learning.ml import *
+import pandas as pd
 
 
-def main():
+def main(arg):
     print("Welcome to Scribe Company Recommendation tool. This is a rudimentary tool for recommending you which "
           "companies to invest in based on a series of factors using machine learning. ")
     print("We will generate and train our model based on your input parameters. ")
 
-    ml(arg)
+    d = pd.read_csv("../Models/companies.csv")
+    mach = ml(d, arg)
+    mach.train_ml()
 
     value = ""
 
@@ -46,5 +49,10 @@ def main():
         value = "exit"
 
         # print ML model result
+        ml.predict_ml([
+            LimitedPartner.fundsize,
+            LimitedPartner.region,
+            LimitedPartner.risk,
+            LimitedPartner.sector,
+            LimitedPartner.strategy])
 
-main()
