@@ -92,7 +92,8 @@ def generateCompanies():
                     list_of_regions[lp.region].value,
                     list_of_risks[lp.risk].value,
                     list_of_sectors[lp.sector].value,
-                    list_of_strategies[lp.strategy].value
+                    list_of_strategies[lp.strategy].value,
+                    random.randint(0, 1)
                 ])
 
 
