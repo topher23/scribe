@@ -38,9 +38,10 @@ def generateCompanies():
             "Investor Desired Region",
             "Investor Desired Risk",
             "Investor Desired Sector",
-            "Investor Desired Strategy"
+            "Investor Desired Strategy",
+            "Invested"
         ])
-        for i in range(0, 20):
+        for i in range(0, 150):
             writer.writerow(
                 [
                     i,
@@ -56,7 +57,8 @@ def generateCompanies():
                     list_of_regions[random.randint(0, len(list_of_regions) - 1)].value,
                     list_of_risks[random.randint(0, len(list_of_risks) - 1)].value,
                     list_of_sectors[random.randint(0, len(list_of_sectors) - 1)].value,
-                    list_of_strategies[random.randint(0, len(list_of_strategies) - 1)].value
+                    list_of_strategies[random.randint(0, len(list_of_strategies) - 1)].value,
+                    random.randint(0, 1)
                 ])
 
 
