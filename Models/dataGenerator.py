@@ -19,7 +19,7 @@ def generate_investors():
     for i in range(0, 150):
         list_of_investors.append(
             LimitedPartner(
-                "Investor " + str(i),
+                i,
                 random.randint(0, len(list_of_funds) - 1),
                 random.randint(0, len(list_of_regions) - 1),
                 random.randint(0, len(list_of_sectors) - 1),
@@ -33,7 +33,7 @@ def generate_companies():
     for i in range(0, 20):
         list_of_companies.append(
             Company(
-                "Company " + str(i),
+                i,
                 random.randint(0, len(list_of_funds) - 1),
                 random.randint(0, len(list_of_regions) - 1),
                 random.randint(0, len(list_of_sectors) - 1),
@@ -58,7 +58,6 @@ def generateCompanies():
    with open('companies.csv', 'w') as file:
         writer = csv.writer(file)
         writer.writerow([
-            "Row",
             "Company Name",
             "Company Fund Size",
             "Company Region",
@@ -79,21 +78,19 @@ def generateCompanies():
 
             writer.writerow(
                 [
-                    i,
-                    "Company " + str(i),
-                    list_of_funds[comp.fundsize].value,
-                    list_of_regions[comp.region].value,
-                    list_of_risks[comp.risk].value,
-                    list_of_sectors[comp.sector].value,
-                    list_of_strategies[comp.strategy].value,
+                    comp.name,
+                    comp.fundsize,
+                    comp.region,
+                    comp.risk,
+                    comp.sector,
+                    comp.strategy,
 
-                    "Investor " + str(i),
-                    list_of_funds[lp.fundsize].value,
-                    list_of_regions[lp.region].value,
-                    list_of_risks[lp.risk].value,
-                    list_of_sectors[lp.sector].value,
-                    list_of_strategies[lp.strategy].value,
-                    random.randint(0, 1)
+                    lp.name,
+                    lp.fundsize,
+                    lp.region,
+                    lp.risk,
+                    lp.sector,
+                    lp.strategy
                 ])
 
 
