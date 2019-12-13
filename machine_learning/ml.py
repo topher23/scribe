@@ -6,30 +6,31 @@ import pandas as pd
 
 class ml():
 
-    def __init__(self, data):
+    def __init__(self, data, arg):
         self.X = data.drop('Invested', 1).copy().values
         self.Y = data['Invested'].copy().values
         x_train, x_test, y_train, y_test = train_test_split(self.X, self.Y, random_state=0, test_size=0.25)
 
-        self.nn_learner = NN(x_train, x_test, y_train, y_test, self.X, self.Y, "data")
-        #self.dt_learner = DT(x_train, x_test, y_train, y_test, self.X, self.Y, "data")
-        #self.knn_learner = KNN(x_train, x_test, y_train, y_test, self.X, self.Y, "data")
 
-        self.nn_best = None
-        self.dt_best = None
-        self.knn_best = None
+
+        if arg == "dt":
+            self.learner = DT(x_train, x_test, y_train, y_test, self.X, self.Y, "data")
+        elif arg == "nn":
+            self.learner = NN(x_train, x_test, y_train, y_test, self.X, self.Y, "data")
+        else:
+            self.learner = KNN(x_train, x_test, y_train, y_test, self.X, self.Y, "data")
+
+        self.best = None
+        self.best = None
+        self.best = None
 
     def train_ml(self):
-        self.nn_best = self.nn_learner.find_optimal()
-        #self.dt_best = self.dt_learner.find_optimal()
-        #self.knn_best = self.knn_learner.find_optimal()
+        self.best = self.learner.find_optimal()
 
     def predict_ml(self, x_data):
-        return self.nn_best.predict(x_data)
-        #return self.dt_best.predict(x_data)
-        #return self.knn_best.predict(x_data)
+        return self.best.predict(x_data)
 
 
 d = pd.read_csv("../Models/companies.csv")
-mach = ml(d)
+mach = ml(d, dt)
 mach.train_ml()
