@@ -23,8 +23,8 @@ class ml():
 
     def train_ml(self):
         self.nn_best = self.nn_learner.find_optimal()
-        self.dt_best = self.dt_learner.find_optimal()
-        self.knn_best = self.knn_learner.find_optimal()
+        #self.dt_best = self.dt_learner.find_optimal()
+        #self.knn_best = self.knn_learner.find_optimal()
 
     def predict_ml(self, x_data):
         return self.nn_best.predict(x_data)
