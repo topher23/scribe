@@ -1,7 +1,5 @@
-from Models.Aggregables.Regions import Regions
-from Models.Aggregables.Risks import Risks
-from Models.Aggregables.Sector import Sector
-from Models.Aggregables.Strategy import Strategy
+import numpy as np
+
 from Models.LimitedPartner import *
 from machine_learning.ml import *
 import pandas as pd
@@ -12,7 +10,7 @@ def main(arg):
           "companies to invest in based on a series of factors using machine learning. ")
     print("We will generate and train our model based on your input parameters. ")
 
-    d = pd.read_csv("../Models/companies.csv")
+    d = pd.read_csv("Models/companies.csv")
     mach = ml(d, arg)
     mach.train_ml()
 
@@ -114,15 +112,10 @@ def main(arg):
             print("Sorry wrong input!")
             break
 
-
         print("Thank you for your time! We will get back to you shortly!")
         value = "exit"
 
         # print ML model result
-        ml.predict_ml([
-            LimitedPartner.fundsize,
-            region_val,
-            risk_val,
-            sector_val,
-            strategy_val])
 
+        arr = np.array([16,100000,4,2,3,4,75,100000,1,1,4,0])
+        match = mach.predict_ml(arr.reshape(1, -1))
