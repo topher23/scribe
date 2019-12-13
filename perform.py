@@ -6,9 +6,6 @@ from Models.LimitedPartner import *
 from machine_learning.ml import *
 import pandas as pd
 
-def test():
-    text = "ASIA"
-    print(Regions.text)
 
 def main(arg):
     print("Welcome to Scribe Company Recommendation tool. This is a rudimentary tool for recommending you which "
