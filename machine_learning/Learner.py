@@ -24,11 +24,3 @@ class Learner(ABC):
     @abstractmethod
     def find_optimal(self):
         pass
-
-    @abstractmethod
-    def generate_learning_plot(self, grid_search):
-        pass
-
-    @abstractmethod
-    def generate_complexity_model_plots(self, grid_search):
-        pass

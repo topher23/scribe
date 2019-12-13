@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 import numpy as np
 import sklearn.model_selection as ms
 from sklearn.neighbors import KNeighborsClassifier
-from ml.Learner import Learner
+from machine_learning.Learner import Learner
 
 
 class KNN(Learner):
