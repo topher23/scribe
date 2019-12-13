@@ -1,0 +1,9 @@
+from enum import Enum
+
+class FundSize(Enum):
+
+    SMALL=100000
+    SMALL_REGULAR=500000
+    REGULAR=1000000
+    REGULAR_LARGE=25000000
+    LARGE=1000000000
