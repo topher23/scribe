@@ -1,5 +1,6 @@
 # Private Equity Company
 
+
 class Company:
 
     def __init__(self, name, region, sector, strategy, risk, fund_size=0):
