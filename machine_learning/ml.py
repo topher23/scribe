@@ -31,6 +31,8 @@ class ml():
         return self.best.predict(x_data)
 
 
+
+#for testing only
 d = pd.read_csv("../Models/companies.csv")
-mach = ml(d, dt)
+mach = ml(d, "dt")
 mach.train_ml()
