@@ -1,3 +1,5 @@
+import random
+
 import numpy as np
 
 from Models.LimitedPartner import *
@@ -18,7 +20,7 @@ def main(arg):
 
     while value.lower() != "exit":
         value = input("What is your name?\n")
-        LimitedPartner.name = value
+        name_val = int(value)
 
         try:
             value = int(input("What is your Available Investment?\n"))
@@ -115,7 +117,11 @@ def main(arg):
         print("Thank you for your time! We will get back to you shortly!")
         value = "exit"
 
-        # print ML model result
-
-        arr = np.array([16,100000,4,2,3,4,75,100000,1,1,4,0])
+        arr = np.array([16,100000,4,2,3,4,name_val,LimitedPartner.fundsize,region_val,risk_val,sector_val,strategy_val])
         match = mach.predict_ml(arr.reshape(1, -1))
+        if match:
+            print("Yes you should invest in fund " + str(random.randint(1,120)), "!")
+        else:
+            print("No you should invest in fund " + str(random.randint(1, 120)), "!")
+
+        print(match)

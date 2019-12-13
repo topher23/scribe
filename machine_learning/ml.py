@@ -11,8 +11,6 @@ class ml():
         self.Y = data['Invested'].copy().values
         x_train, x_test, y_train, y_test = train_test_split(self.X, self.Y, random_state=0, test_size=0.25)
 
-
-
         if arg == "dt":
             self.learner = DT(x_train, x_test, y_train, y_test, self.X, self.Y, "data")
         elif arg == "nn":
@@ -33,6 +31,6 @@ class ml():
 
 
 #for testing only
-d = pd.read_csv("../Models/companies.csv")
-mach = ml(d, "dt")
-mach.train_ml()
+# d = pd.read_csv("../Models/companies.csv")
+# mach = ml(d, "dt")
+# mach.train_ml()
