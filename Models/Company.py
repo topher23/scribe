@@ -1,13 +1,10 @@
-# Private Equity Company
-
-
 class Company:
 
-    def __init__(self, name, region, sector, strategy, risk, fund_size=0):
+    def __init__(self, name, fundsize, region, sector, strategy, risk):
         self.name = name
+        self.fundsize = fundsize
         self.region = region
         self.sector = sector
         self.strategy = strategy
-        self.fund_size = fund_size
         self.risk = risk
 

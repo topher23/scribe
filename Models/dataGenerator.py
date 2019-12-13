@@ -1,7 +1,9 @@
 import csv
 import random
 
+from Models.Company import Company
 from Models.Aggregables import FundSize, Regions, Risks, Sector, Strategy
+from Models.LimitedPartner import LimitedPartner
 
 list_of_funds = []
 list_of_regions = []
@@ -9,6 +11,36 @@ list_of_risks = []
 list_of_sectors = []
 list_of_strategies = []
 
+list_of_companies = []
+list_of_investors = []
+
+
+def generate_investors():
+    for i in range(0, 150):
+        list_of_investors.append(
+            LimitedPartner(
+                "Investor " + str(i),
+                random.randint(0, len(list_of_funds) - 1),
+                random.randint(0, len(list_of_regions) - 1),
+                random.randint(0, len(list_of_sectors) - 1),
+                random.randint(0, len(list_of_strategies) - 1),
+                random.randint(0, len(list_of_risks) - 1)
+            )
+        )
+
+
+def generate_companies():
+    for i in range(0, 20):
+        list_of_companies.append(
+            Company(
+                "Company " + str(i),
+                random.randint(0, len(list_of_funds) - 1),
+                random.randint(0, len(list_of_regions) - 1),
+                random.randint(0, len(list_of_sectors) - 1),
+                random.randint(0, len(list_of_strategies) - 1),
+                random.randint(0, len(list_of_risks) - 1)
+            )
+        )
 
 def generate_lists_of_aggregables():
     for i in FundSize.FundSize:
@@ -23,7 +55,7 @@ def generate_lists_of_aggregables():
         list_of_strategies.append(i)
 
 def generateCompanies():
-    with open('companies.csv', 'w') as file:
+   with open('companies.csv', 'w') as file:
         writer = csv.writer(file)
         writer.writerow([
             "Row",
@@ -42,25 +74,31 @@ def generateCompanies():
             "Invested"
         ])
         for i in range(0, 150):
+            lp = list_of_investors[random.randint(0, len(list_of_investors) - 1)]
+            comp = list_of_companies[random.randint(0, len(list_of_companies) - 1)]
+
             writer.writerow(
                 [
                     i,
                     "Company " + str(i),
-                    list_of_funds[random.randint(0, len(list_of_funds) - 1)].value,
-                    list_of_regions[random.randint(0, len(list_of_regions) - 1)].value,
-                    list_of_risks[random.randint(0, len(list_of_risks) - 1)].value,
-                    list_of_sectors[random.randint(0, len(list_of_sectors) - 1)].value,
-                    list_of_strategies[random.randint(0, len(list_of_strategies) - 1)].value,
+                    list_of_funds[comp.fundsize].value,
+                    list_of_regions[comp.region].value,
+                    list_of_risks[comp.risk].value,
+                    list_of_sectors[comp.sector].value,
+                    list_of_strategies[comp.strategy].value,
 
                     "Investor " + str(i),
-                    list_of_funds[random.randint(0, len(list_of_funds) - 1)].value,
-                    list_of_regions[random.randint(0, len(list_of_regions) - 1)].value,
-                    list_of_risks[random.randint(0, len(list_of_risks) - 1)].value,
-                    list_of_sectors[random.randint(0, len(list_of_sectors) - 1)].value,
-                    list_of_strategies[random.randint(0, len(list_of_strategies) - 1)].value,
-                    random.randint(0, 1)
+                    list_of_funds[lp.fundsize].value,
+                    list_of_regions[lp.region].value,
+                    list_of_risks[lp.risk].value,
+                    list_of_sectors[lp.sector].value,
+                    list_of_strategies[lp.strategy].value
                 ])
 
 
 generate_lists_of_aggregables()
+
+generate_investors()
+generate_companies()
+
 generateCompanies()
