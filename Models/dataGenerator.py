@@ -90,7 +90,8 @@ def generateCompanies():
                     lp.region,
                     lp.risk,
                     lp.sector,
-                    lp.strategy
+                    lp.strategy,
+                    random.randint(0, 1)
                 ])
 
 
